@@ -10,4 +10,4 @@ pot fi sterse a.i. sa se poata considera ca s-au efectuat:
 2 pasi min sort
 
 
-backtracking cu partitionare. cautam vectroul cu nr min de elem care parteaza invariantul
+backtracking cu partitionare. cautam vectroul cu nr min de elem care pastreaza invariantul
