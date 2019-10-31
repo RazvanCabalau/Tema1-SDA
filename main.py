@@ -24,13 +24,13 @@ if __name__ == '__main__':
         solutions.append(solution)
 
 
-    print('### Exercitiul S3 ###')
+    print('### Test SDA ###')
     print('Cerinte:')
     for statement in statements:
         print(statement)
         print('')
     
-    #print('')
+    print('')
 
     print('Rezolvari:')
     for solution in solutions:
