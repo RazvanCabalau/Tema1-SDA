@@ -1,0 +1,2 @@
+In cerinta trebuie sa pun si ce e in paranteza sau asta ramane pentru partea de interpretare?
+Daca se face selectia maximului se sorteaza crescator si se impinge maximul la final sau se sorteaza descrecator?
