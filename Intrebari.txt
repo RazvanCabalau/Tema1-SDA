@@ -1,2 +1,7 @@
 In cerinta trebuie sa pun si ce e in paranteza sau asta ramane pentru partea de interpretare?
-Daca se face selectia maximului se sorteaza crescator si se impinge maximul la final sau se sorteaza descrecator?
+
+
+Daca se face selectia maximului se sorteaza crescator si se impinge maximul la final sau se sorteaza descrecator? Asta inseamna ca la pasul k o sa avem sortatate ultimele k elemente?
+
+
+

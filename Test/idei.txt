@@ -1,0 +1,11 @@
+
+
+-[pentru selectia minimului]
+consider ca in sir nu am elemente care se repeta
+
+daca inainte de min gasim numere mai mari nu e ok (7)
+
+daca un nr se afla in interv [min, max] si nu e in subset il sterg
+
+ar trebui sa tin cont si de o diferenta intre minimi si maxim
+pentru a stii cate numere sa sterg
