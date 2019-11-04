@@ -1,0 +1,12 @@
+Sirul initial: [7, 11, 10, 6, 4, 9, 8, 0, 2, 3, 1]
+
+Submultimea obtinuta dupa 2 pasi prin algoritmul de sortare prin selectia minimului este [7, 11]
+10
+9
+8
+
+Numarul minim de elemente pe care trebuie sa le stergem: 9
+
+Elementele pe care le-am sters: [6, 4, 0, 2, 3, 1, 10, 9, 8]
+
+(aici cred ca ar fi terbuit sa ca [2,3] sa fie multimea pe care o selecta ca sa faca stergerea, doar ca ar fi facut acelasi numar de pasi)
