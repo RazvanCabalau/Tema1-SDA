@@ -5,7 +5,20 @@ consider ca in sir nu am elemente care se repeta
 
 daca inainte de min gasim numere mai mari nu e ok (7)
 
-daca un nr se afla in interv [min, max] si nu e in subset il sterg
+o abordare mai buna ar fi sa caut atatea minime cat e nr de pasi cu restrictia sa fie in secventa
+
+
+
+
+<prima abordare>
+(daca un nr se afla in interv [min, max] si nu e in subset il sterg
 
 ar trebui sa tin cont si de o diferenta intre minimi si maxim
-pentru a stii cate numere sa sterg
+pentru a stii cate numere sa sterg)
+
+daca un numar din sir e mai mic decat minimul din secventa il sterg (in cazul asta trebuie sa caut atatea minimie cat e diferenta dintre minumul din secventa si 1)
+
+</prima abordare>
+
+
+
