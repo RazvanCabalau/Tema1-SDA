@@ -1,0 +1,104 @@
+Cerinte:
+Primind sirul: 6, 10, 8, 1, 5, 9, 2, 4. Gasiti numarul minim de elemente care pot fi sterse
+a.i. sa se poata considera ca s-au efectuat:
+a) 2 pasi din alg. de sort. prin selectia max
+b) 2 pasi din alg. de sort. prin selectia min
+c) 2 pasi din alg. de sort. prin insertie directa
+
+=================================================
+
+
+Rezolvari:
+Pentru toate cazurile generam submultimi de elemente din vector pentru a cauta-o pe aceea care 
+are numarul minim de elemente pe care sa le putem sterge pentru a satisface fiecare cerinta.
+Generarea submultimilor se face prin selectia combinarilor de n elemente luate cate nrPasi 
+corespunzator subpunctului.
+La fiecare pas din cerinta iteram prin combinarile genrate si le alegem pe cele care au o
+lungime corespunzatoarenumarului de pasi pe care l-a facut altgoritmul si sunt sortate
+
+a)Selectia maximului.
+Vectorul 6 10 8 1 5 9 2 4 s-a obtinut dupa 2 pasi din sortare.
+
+
+Pentru selectia maximului am gasit 10 subseturi de lungime 2 : [6, 10] [6, 8] [6, 9] [8, 9] [1, 5] [1, 9] [1, 2] [1, 4] [5, 9] [2, 4] 
+
+La fiecare pas consideram secventa sortata  s1, ..., sP, unde P e lungimea secventei, si eliminam numerele:
+	- care sunt mai mari decat sP
+	- care sunt mai mici decat s1 si se afla dupa s1 in vector
+	- care sunt mai mici decat sP si se afla dupa sP in vector
+	- care apartin intervalului [s1, sP], dar nu sunt in secventa
+
+Pentru secventa [6, 10] elementele [ 8 1 5 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [6, 8] elementele [ 10 1 5 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [6, 9] elementele [ 10 8 1 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [8, 9] elementele [ 10 1 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 5] elementele [ 6 10 8 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 9] elementele [ 6 10 8 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 2] elementele [ 6 10 8 5 9 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 4] elementele [ 6 10 8 5 9 2 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [5, 9] elementele [ 6 10 8 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [2, 4] elementele [ 6 10 8 5 9 ] au fost sterse conform celor de mai sus.
+
+Secventa minima este de lungime 5 => stergem numerele: [ 10 1 5 2 4 ] 
+
+b)Selectia minimului:
+Vectorul 6 10 8 1 5 9 2 4 s-a obtinut dupa 2 pasi din sortare.
+
+
+Pentru selectia minimului am gasit 10 subseturi de lungime 2 : [6, 10 ] [6, 8 ] [6, 9 ] [8, 9 ] [1, 5 ] [1, 9 ] [1, 2 ] [1, 4 ] [5, 9 ] [2, 4 ] 
+
+La fiecare pas consideram secventa sortata  s1, ..., sP, unde P e lungimea secventei, si eliminam numerele:
+	- care sunt mai mici decat s1
+	- care sunt mai mari decat sP si se afla la stanga lui sP
+	- care apartin intervalului [s1, sP] dar nu se afla un subset
+
+Pentru secventa [6, 10] elementele [ 8 1 5 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [6, 8] elementele [ 10 1 5 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [6, 9] elementele [ 10 8 1 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [8, 9] elementele [ 10 1 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 5] elementele [ 6 10 8 9 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 9] elementele [ 6 10 8 5 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 2] elementele [ 6 10 8 5 9 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 4] elementele [ 6 10 8 5 9 2 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [5, 9] elementele [ 6 10 8 2 4 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [2, 4] elementele [ 6 10 8 5 9 ] au fost sterse conform celor de mai sus.
+
+Secventa minima este de lungime 5 => stergem numerele: [ 10 1 5 2 4 ] 
+
+c)Insertie:
+Vectorul 6 10 8 1 5 9 2 4 s-a obtinut dupa 2 pasi din sortare.
+
+
+Pentru insertie am gasit 3 subseturi care respecta cerinta : [6, 8, 9 ] [1, 5, 9 ] [1, 2, 4 ] 
+
+La fiecare pas consideram secventa sortata  s1, ..., sP, unde P e lungimea secventei, si eliminam numerele:
+	- care sunt mai mici decat s1
+	- care sunt mai mari decat sP
+	- care apartin intervalului [s1, sP] dar nu se afla un subset
+
+Pentru secventa [6, 8, 9] elementele [ 10 1 5 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 5, 9] elementele [ 6 10 8 ] au fost sterse conform celor de mai sus.
+
+Pentru secventa [1, 2, 4] elementele [ 6 10 8 5 9 ] au fost sterse conform celor de mai sus.
+
+Secventa minima este de lungime 3 => stergem numerele: [ 10 1 5 ] 
+

@@ -15,7 +15,7 @@ class ProblemTest1(Problem):
         data = (datagen, nrPasiUnu, nrPasiDoi, nrPasiTrei)
 
         statement = 'Primind sirul: ' + ', '.join(map(str, data[0])) + '. '
-        statement += 'Gasiti numarul minim de elemente care pot fi sterse a.i. sa se poata considera ca s-au efectuat:\n'
+        statement += 'Gasiti numarul minim de elemente care pot fi sterse\na.i. sa se poata considera ca s-au efectuat:\n'
         statement += 'a) ' + str (nrPasiUnu)
         statement += ' pasi din alg. de sort. prin selectia max\n' 
         statement += 'b) ' + str (nrPasiDoi)
@@ -30,7 +30,7 @@ class ProblemTest1(Problem):
 
     def solve(self):
         v = self.data[0]
-        solution = "Pentru toate cazuriel generam submultimi de elemente din vector pentru a cauta-o pe aceea care \nare numarul minim de elemente pe care "
+        solution = "Pentru toate cazurile generam submultimi de elemente din vector pentru a cauta-o pe aceea care \nare numarul minim de elemente pe care "
         solution += "sa le putem sterge pentru a satisface fiecare cerinta.\n"
         solution += "Generarea submultimilor se face prin selectia combinarilor de n elemente luate cate nrPasi \ncorespunzator subpunctului.\n"
         solution += "La fiecare pas din cerinta iteram prin combinarile genrate si le alegem pe cele care au o\nlungime corespunzatoare"
@@ -185,14 +185,16 @@ class ProblemTest1(Problem):
                 if len(arrMaxim) < min:
                     min = len(arrMaxim)
                     minimSterse = arrMaxim
-
-            solution += "\nSecventa de lungime " + str(min) + " pe care o stergem este: "
-            solution += '[ '
-            for i in range (len(minimSterse)):
-                solution += str(minimSterse[i])
-                if i != len(minimSterse) -1:
-                    solution += ' '
-            solution += "] "
+            if (min == 0):
+                solution += "Primele " + str(min) + " respecta cerinta.\n"
+            else:
+                solution += "\nSecventa minima este de lungime " + str(min) + " => stergem numerele: "
+                solution += '[ '
+                for i in range (len(minimSterse)):
+                    solution += str(minimSterse[i])
+                    if i != len(minimSterse) -1:
+                        solution += ' '
+                solution += " ] "
         
         solution +="\n\nb)Selectia minimului:"
         solution +="\nVectorul "+ " ".join(map(str, self.data[0])) + " s-a obtinut dupa " + str(nrPasiDoi) + " pasi din sortare.\n"
@@ -208,7 +210,7 @@ class ProblemTest1(Problem):
                     solution += str(subset[i])
                     if i != len(subset) -1:
                         solution += ', '
-                solution += "] "
+                solution += " ] "
 
             solution += "\n\nLa fiecare pas consideram secventa sortata  s1, ..., sP, unde P e lungimea secventei, si eliminam numerele:\n"
             solution += "\t- care sunt mai mici decat s1\n"
@@ -223,18 +225,21 @@ class ProblemTest1(Problem):
             for elem in keepMinim:
                 (arrMinim, sol) = eliminSelectMaxim(elem)
                 solution += sol
-                arrMinim = eliminSelectMinim(elem)
+                #arrMinim = eliminSelectMinim(elem)
                 if len(arrMinim) < min2:
                     min2 = len(arrMinim)
                     minimSterse2 = arrMinim
-            solution += "\nSecventa de lungime " + str(min2) + " pe care o stergem este: "
-            solution += '[ '
+            if (min2 == 0):
+                solution += "Primele " + str(min2) + " respecta cerinta.\n"
+            else:
+                solution += "\nSecventa minima este de lungime " + str(min2) + " => stergem numerele: "
+                solution += '[ '
 
-            for i in range (len(minimSterse2)):
-                solution += str(minimSterse2[i])
-                if i != len(minimSterse2) -1:
-                    solution += ' '
-            solution += " ] "
+                for i in range (len(minimSterse2)):
+                    solution += str(minimSterse2[i])
+                    if i != len(minimSterse2) -1:
+                        solution += ' '
+                solution += " ] "
 
         solution +="\n\nc)Insertie:"
         solution +="\nVectorul "+ " ".join(map(str, self.data[0])) + " s-a obtinut dupa " + str(nrPasiTrei) + " pasi din sortare.\n"
@@ -267,14 +272,17 @@ class ProblemTest1(Problem):
                 if len(arrInsertie) < min3:
                     min3 = len(arrInsertie)
                     minimSterse3 = arrInsertie
-            solution += "\nSecventa de lungime " + str(min3) + " pe care o stergem este: "
-            solution += "[ "
-                
-            for i in range (len(minimSterse3)):
-                solution += str(minimSterse3[i])
-                if i != len(minimSterse3) -1:
-                    solution += ' '
-            solution += " ] "
+            if (min3 == 0):
+                solution += "Primele " + str(min3) + " respecta cerinta.\n"
+            else:
+                solution += "\nSecventa minima este de lungime " + str(min3) + " => stergem numerele: "
+                solution += "[ "
+                    
+                for i in range (len(minimSterse3)):
+                    solution += str(minimSterse3[i])
+                    if i != len(minimSterse3) -1:
+                        solution += ' '
+                solution += " ] "
 
         return solution
             
