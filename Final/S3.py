@@ -22,6 +22,7 @@ class ProblemTest1(Problem):
         statement += ' pasi din alg. de sort. prin selectia min\n'
         statement += 'c) ' + str (nrPasiTrei)
         statement += ' pasi din alg. de sort. prin insertie directa'
+        statement += '\n\n================================================='
     
 
         super().__init__(statement, data)
@@ -82,38 +83,58 @@ class ProblemTest1(Problem):
             primul = subset[0]
             ultimul = subset [len(subset) -1]
             sterse = []
+            sol = "\nPentru secventa ["
+            for i in range (len(subset)):
+                sol += str(subset[i])
+                if i != len(subset) -1:
+                    sol += ', '
+            sol += "] elementele [ "
             for i in range(len(v)):
                 if v[i] in subset:
                     continue
                 if v[i] < primul:
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
                 if v[i] > ultimul and i < v.index(ultimul):
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
                 if v[i] > primul and v[i] < ultimul:
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
-            return sterse
+            sol += '] au fost sterse conform celor de mai sus.\n'
+            return (sterse, sol)
 
 
         def eliminInsertie (subset):
             primul = subset[0]
             ultimul = subset [len(subset) -1]
             sterse = []
+            sol = "\nPentru secventa ["
+            for i in range (len(subset)):
+                sol += str(subset[i])
+                if i != len(subset) -1:
+                    sol += ', '
+            sol += "] elementele [ "
             for i in range(v.index(ultimul)):
                 if v[i] in subset:
                     continue
                 if v[i] < primul:
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
                 if v[i] > ultimul:
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
                 if v[i] > primul and v[i] < ultimul:
                     sterse.append(v[i])
+                    sol += str(v[i]) + " "
                     continue
-            return sterse
+            sol += '] au fost sterse conform celor de mai sus.\n'
+            return (sterse, sol)
 
         nrPasiUnu = self.data[1]
         nrPasiDoi = self.data[2]
@@ -134,7 +155,8 @@ class ProblemTest1(Problem):
                 subset = list(subset)
                 keepInsertie.append(subset)
         
-        solution +="\na)Selectia maximului:"
+        solution +="\na)Selectia maximului."
+        solution +="\nVectorul "+ " ".join(map(str, self.data[0])) + " s-a obtinut dupa " + str(nrPasiUnu) + " pasi din sortare.\n"
 
         if (len(keepMaxim) == 0):
             solution += "\nNu a fost gasita o secventa sortata de lungime " + str(nrPasiUnu) + ".\n"
@@ -173,6 +195,7 @@ class ProblemTest1(Problem):
             solution += "] "
         
         solution +="\n\nb)Selectia minimului:"
+        solution +="\nVectorul "+ " ".join(map(str, self.data[0])) + " s-a obtinut dupa " + str(nrPasiDoi) + " pasi din sortare.\n"
 
         if (len(keepMinim) == 0):
             solution += "\nNu a fost gasita o secventa sortata de lungime " + str(nrPasiDoi) + ".\n"
@@ -198,6 +221,8 @@ class ProblemTest1(Problem):
             min2 = len(v)
 
             for elem in keepMinim:
+                (arrMinim, sol) = eliminSelectMaxim(elem)
+                solution += sol
                 arrMinim = eliminSelectMinim(elem)
                 if len(arrMinim) < min2:
                     min2 = len(arrMinim)
@@ -212,6 +237,8 @@ class ProblemTest1(Problem):
             solution += " ] "
 
         solution +="\n\nc)Insertie:"
+        solution +="\nVectorul "+ " ".join(map(str, self.data[0])) + " s-a obtinut dupa " + str(nrPasiTrei) + " pasi din sortare.\n"
+
         if (len(keepInsertie) == 0):
             solution += "\nNu a fost gasita o secventa sortata de lungime " + str(nrPasiTrei) + ".\n"
         else:
@@ -228,12 +255,15 @@ class ProblemTest1(Problem):
             solution += "\t- care sunt mai mici decat s1\n"
             solution += "\t- care sunt mai mari decat sP\n"
             solution += "\t- care apartin intervalului [s1, sP] dar nu se afla un subset\n"
+            
+            sol =""
             arrInsertie = []
             minimSterse3 = []
             min3 = len(v)
 
             for elem in keepInsertie:
-                arrInsertie = eliminInsertie(elem)
+                (arrInsertie, sol) = eliminInsertie(elem)
+                solution += sol
                 if len(arrInsertie) < min3:
                     min3 = len(arrInsertie)
                     minimSterse3 = arrInsertie
